@@ -53,6 +53,41 @@ const Separator = ({ delay = 0 }) => (
   />
 );
 
+const NavButton = ({ direction, onClick, visible }) => (
+  <button
+    onClick={onClick}
+    style={{
+      width: "24px",
+      height: "24px",
+      borderRadius: "50%",
+      border: "none",
+      backgroundColor: "rgba(0, 123, 136, 0.1)",
+      color: "#007B88",
+      cursor: "pointer",
+      display: visible ? "flex" : "none",
+      alignItems: "center",
+      justifyContent: "center",
+      transition: "all 0.2s ease",
+      zIndex: 10,
+      flexShrink: 0,
+      margin: "0 4px",
+      userSelect: "none",
+    }}
+    onMouseEnter={(e) =>
+      (e.currentTarget.style.backgroundColor = "rgba(0, 123, 136, 0.2)")
+    }
+    onMouseLeave={(e) =>
+      (e.currentTarget.style.backgroundColor = "rgba(0, 123, 136, 0.1)")
+    }
+  >
+    {direction === "left" ? (
+      <ChevronLeft size={16} />
+    ) : (
+      <ChevronRight size={16} />
+    )}
+  </button>
+);
+
 const iconsList = [
   {
     icon: Stethoscope,
@@ -276,41 +311,6 @@ const IconBar = () => {
       scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
     }
   };
-
-  const NavButton = ({ direction, onClick, visible }) => (
-    <button
-      onClick={onClick}
-      style={{
-        width: "24px",
-        height: "24px",
-        borderRadius: "50%",
-        border: "none",
-        backgroundColor: "rgba(0, 123, 136, 0.1)",
-        color: "#007B88",
-        cursor: "pointer",
-        display: visible ? "flex" : "none",
-        alignItems: "center",
-        justifyContent: "center",
-        transition: "all 0.2s ease",
-        zIndex: 10,
-        flexShrink: 0,
-        margin: "0 4px",
-        userSelect: "none",
-      }}
-      onMouseEnter={(e) =>
-        (e.currentTarget.style.backgroundColor = "rgba(0, 123, 136, 0.2)")
-      }
-      onMouseLeave={(e) =>
-        (e.currentTarget.style.backgroundColor = "rgba(0, 123, 136, 0.1)")
-      }
-    >
-      {direction === "left" ? (
-        <ChevronLeft size={16} />
-      ) : (
-        <ChevronRight size={16} />
-      )}
-    </button>
-  );
 
   return (
     <div
